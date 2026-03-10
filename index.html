@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>NEON TYPE</title>
+  <link rel="stylesheet" href="style.css" />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Courier+Prime:ital,wght@0,400;0,700;1,400&display=swap" rel="stylesheet" />
+</head>
+<body>
+
+  <!-- MENU -->
+  <div id="screen-menu" class="screen active">
+    <div class="noise"></div>
+    <div class="menu-inner">
+      <div class="logo-block">
+        <span class="logo-sub">/// RHYTHM TYPING //</span>
+        <h1 class="logo-main">NEON<br><em>TYPE</em></h1>
+        <span class="logo-sub">// TYPE TO THE BEAT ///</span>
+      </div>
+      <div class="menu-details">
+        <div class="detail-line">TYPE THE WORDS BEFORE THEY HIT THE FLOOR</div>
+        <div class="detail-line dim">EACH CORRECT KEY PLAYS A NOTE</div>
+      </div>
+      <div class="difficulty-row">
+        <button class="diff-btn active" data-diff="easy">EASY</button>
+        <button class="diff-btn" data-diff="medium">MEDIUM</button>
+        <button class="diff-btn" data-diff="hard">HARD</button>
+      </div>
+      <button id="btn-play" class="start-btn">START PLAYING</button>
+    </div>
+    <canvas id="menu-viz"></canvas>
+  </div>
+
+  <!-- GAME -->
+  <div id="screen-game" class="screen">
+    <div class="noise"></div>
+    <header class="top-bar">
+      <div class="stat-block">
+        <div class="stat-label">SCORE</div>
+        <div class="stat-val" id="g-score">0</div>
+      </div>
+      <div class="stat-block center-stat">
+        <div class="combo-ring" id="combo-ring">
+          <svg viewBox="0 0 60 60">
+            <circle cx="30" cy="30" r="26" class="ring-bg"/>
+            <circle cx="30" cy="30" r="26" class="ring-fill" id="ring-fill"/>
+          </svg>
+          <div class="combo-num" id="combo-num">0</div>
+        </div>
+        <div class="stat-label">COMBO</div>
+      </div>
+      <div class="stat-block right-stat">
+        <div class="stat-label">ACCURACY</div>
+        <div class="stat-val" id="g-acc">100%</div>
+      </div>
+    </header>
+
+    <div class="play-area" id="play-area">
+      <canvas id="game-canvas"></canvas>
+      <div class="words-layer" id="words-layer"></div>
+      <div class="floor-line"></div>
+    </div>
+
+    <footer class="input-zone">
+      <div class="input-wrap">
+        <span class="input-caret">›</span>
+        <input id="word-input" type="text" autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false" placeholder="type here..." />
+        <div class="input-glow" id="input-glow"></div>
+      </div>
+      <div class="lives-row">
+        <span class="lives-label">LIVES</span>
+        <div class="lives" id="lives">
+          <span class="life" data-i="0">♦</span>
+          <span class="life" data-i="1">♦</span>
+          <span class="life" data-i="2">♦</span>
+        </div>
+      </div>
+    </footer>
+  </div>
+
+  <!-- RESULTS -->
+  <div id="screen-results" class="screen">
+    <div class="noise"></div>
+    <div class="results-inner">
+      <div class="results-title">SESSION<br><em>COMPLETE</em></div>
+      <div class="results-grid">
+        <div class="res-cell"><div class="res-label">SCORE</div><div class="res-val" id="r-score">0</div></div>
+        <div class="res-cell"><div class="res-label">WORDS</div><div class="res-val" id="r-words">0</div></div>
+        <div class="res-cell"><div class="res-label">ACCURACY</div><div class="res-val" id="r-acc">0%</div></div>
+        <div class="res-cell"><div class="res-label">TOP COMBO</div><div class="res-val" id="r-combo">0</div></div>
+        <div class="res-cell wide"><div class="res-label">WPM</div><div class="res-val big" id="r-wpm">0</div></div>
+      </div>
+      <div class="results-btns">
+        <button id="btn-again" class="start-btn">PLAY AGAIN</button>
+        <button id="btn-menu"  class="ghost-btn">MENU</button>
+      </div>
+    </div>
+    <canvas id="results-viz"></canvas>
+  </div>
+
+  <script src="game.js"></script>
+</body>
+</html>
